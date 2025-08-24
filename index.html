@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Frosty Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+   <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #fff8f2;
+      color: #333;
+      text-align: center;
+    }
+    header {
+      background: linear-gradient(135deg, #f8cdda, #f6e6e9);
+      padding: 30px;
+      color: #5a3e36;
+    }
+    .shop-name {
+        font-family: 'Great Vibes', cursive;
+        font-size: 4rem;
+        text-align: center;
+        color: #4b2e2e; /* elegant chocolatey brown */
+        margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+.menu {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 per row by default */
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+}
+
+@media (max-width: 900px) {
+  .menu {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on medium screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .menu {
+    grid-template-columns: 1fr; /* 1 per row on small screens */
+  }
+}
+
+
+    .item {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        padding: 12px;
+        max-width: 180px; /* smaller cards */
+        transition: transform 0.2s ease;
+    }
+
+    .item img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .item:hover {
+      transform: translateY(-5px);
+    }
+
+    .item h3 {
+      margin: 15px 0;
+      font-size: 1.5rem;
+      font-family: 'Dancing Script', cursive;
+      color: #7b3f00;
+    }
+    .btn {
+      background: #ff7b7b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #e85a5a;
+    }
+    footer {
+      background: #f6e6e9;
+      padding: 15px;
+      font-size: 0.9rem;
+      margin-top: 30px;
+    }
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="shop-name">The Frosty Shop</h1>
+    <p>Sweet Treats Made With Love</p>
+  </header>
+
+  <section class="menu">
+  <div class="item">
+    <img src="https://images.unsplash.com/photo-1583743089695-4b816a340f82?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D" alt="Cookies">
+    <h3>Cookies</h3>
+    <input type="number" id="qty-cookies" min="1" value="1" class="qty-box">
+    <button class="btn" onclick="order('Cookies', document.getElementById('qty-cookies').value)">Order Now</button>
+  </div>
+
+  <div class="item">
+    <img src="https://images.unsplash.com/photo-1464347744102-11db6282f854?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNha2UlMjBzbGljZXxlbnwwfHwwfHx8MA%3D%3D" alt="Pasteries">
+    <h3>Pasteries</h3>
+    <input type="number" id="qty-pasteries" min="1" value="1" class="qty-box">
+    <button class="btn" onclick="order('Pasteries', document.getElementById('qty-pasteries').value)">Order Now</button>
+  </div>
+
+  <div class="item">
+    <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNha2UlMjBzbGljZXxlbnwwfHwwfHx8MA%3D%3D" alt="Cheese Cake">
+    <h3>Cheese Cake</h3>
+    <input type="number" id="qty-cheesecake" min="1" value="1" class="qty-box">
+    <button class="btn" onclick="order('Cheese Cake', document.getElementById('qty-cheesecake').value)">Order Now</button>
+  </div>
+
+  <div class="item">
+    <img src="https://images.unsplash.com/photo-1694449052833-57aebb388474?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y3JlYW0lMjByb2xsfGVufDB8fDB8fHww" alt="Cream Roll">
+    <h3>Cream Roll</h3>
+    <input type="number" id="qty-creamroll" min="1" value="1" class="qty-box">
+    <button class="btn" onclick="order('Cream Roll', document.getElementById('qty-creamroll').value)">Order Now</button>
+  </div>
+
+  <div class="item">
+    <img src="https://plus.unsplash.com/premium_photo-1715178982048-d36eba937bc2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cherry Cake">
+    <h3>Cherry Cake</h3>
+    <input type="number" id="qty-cherrycake" min="1" value="1" class="qty-box">
+    <button class="btn" onclick="order('Cherry Cake', document.getElementById('qty-cherrycake').value)">Order Now</button>
+  </div>
+
+  <div class="item">
+    <img src="https://images.unsplash.com/photo-1626094309830-abbb0c99da4a?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRvbnV0fGVufDB8fDB8fHww" alt="Donut">
+    <h3>Donut</h3>
+    <input type="number" id="qty-donut" min="1" value="1" class="qty-box">
+    <button class="btn" onclick="order('Donut', document.getElementById('qty-donut').value)">Order Now</button>
+  </div>
+</section>
+
+
+
+  <footer>
+    © 2025 The Frosty Shop | Freshness in Every Bite
+  </footer>
+
+  <script>
+  const API_URL = "http://localhost:5000/api/order";
+
+  // This gets called by each "Order Now" button
+  async function order(productName, qty = 1) {
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: productName, quantity: parseInt(qty) })
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message);
+
+    alert(`${qty} ${productName}(s) ordered successfully!`);
+
+  } catch (err) {
+    console.error(err);
+    alert("Error placing order: " + err.message);
+  }
+}
+
+
+  // If you still want to fetch and display order history somewhere
+  async function fetchOrders() {
+    try {
+      const res = await fetch(API_URL);
+      const data = await res.json();
+      const list = document.getElementById("orderList");
+      if (!list) return; // only run if there's an orderList element
+      list.innerHTML = "";
+      data.forEach(order => {
+        const productName = order.name?.name || "Unknown"; // populated name
+        const li = document.createElement("li");
+        li.textContent = `${productName} - Qty: ${order.quantity} - Amount: ${order.amount}`;
+        list.appendChild(li);
+      });
+    } catch (err) {
+      console.error(err);
+      alert("Error fetching orders");
+    }
+  }
+</script>
+
+</body>
+</html>
+
+
